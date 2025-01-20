@@ -8,6 +8,7 @@ This project is a **Node.js API** that provides a RESTful interface for managing
 - Clean architecture and separation of concerns.
 - Containerized using **Docker** for ease of deployment.
 - **TypeScript** for type safety.
+- Unit testing with **Jest**.
 
 ## Prerequisites
 - **Node.js** (version >= 18)
@@ -30,3 +31,10 @@ docker run --name redis -p 6379:6379 -d redis
 ### 4. Build and Run the API
 docker build -t movie-api .
 docker run -p 3000:3000 movie-api
+
+### Unit Testing
+Unit tests have been implemented using Jest. All test classes can be found in the tests folder.
+
+#### Running Tests
+To run the unit tests, use the following command:
+npm test
