@@ -1,4 +1,5 @@
-import mongoose, { Document } from 'mongoose';
+import { ObjectId } from 'mongodb';
+import mongoose, { Document, Schema} from 'mongoose';
 
 export interface IMovie extends Document {
   title: string;
@@ -7,17 +8,17 @@ export interface IMovie extends Document {
   genre: string;
   rating: number;
   imdbId: string;
-  director: mongoose.Types.ObjectId;  // Director, ObjectId olarak tanımlı
+  director: ObjectId | ObjectId[];
 }
 
-const MovieSchema = new mongoose.Schema({
+const MovieSchema: Schema<IMovie> = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   releaseDate: { type: Date, required: true },
   genre: { type: String, required: true },
   rating: { type: Number, required: true },
   imdbId: { type: String, required: true },
-  director: { type: mongoose.Types.ObjectId, ref: 'Director', required: true }  // Director referansı
-});
+  director: [{ type: Schema.Types.ObjectId, ref: 'Director', required: true }] // Yönetmen referansları dizisi
+}, { timestamps: true });
 
 export default mongoose.model<IMovie>('Movie', MovieSchema);

@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IDirector extends Document {
-  _id: mongoose.Schema.Types.ObjectId;  // _id alanını ObjectId olarak tanımlıyoruz
   firstName: string;
   lastName: string;
   birthDate: Date;
